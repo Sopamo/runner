@@ -1,3 +1,5 @@
+package de.sopamo.runner;
+
 import java.awt.event.KeyEvent;
 
 public class Player extends Item {

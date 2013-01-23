@@ -1,3 +1,5 @@
+package de.sopamo.runner;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +20,7 @@ public class Board extends JPanel implements ActionListener {
 
     public Board() {
         instance = this;
-        player = new Player();
+        player = new Player(    );
 
         items = new ArrayList();
         staticItems = new ArrayList();
