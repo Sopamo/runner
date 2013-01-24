@@ -55,7 +55,7 @@ public class Item extends Rectangle2D.Double {
 
         // Calculate y
         m = (p2[1] - p1[1]) / (p2[0] - p1[0]);
-        b = p1[1] - (m * p1[0]);
+        b = p1[1];
     }
 
     public double getRotation() {
@@ -67,7 +67,10 @@ public class Item extends Rectangle2D.Double {
     }
 
     public void setY(double y) {
+    	//
         this.y = y;
+        
+        
     }
 
     public double getDx() {

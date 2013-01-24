@@ -80,10 +80,13 @@ public class Board extends JPanel implements ActionListener {
                 if (rb.intersects(ra.getBounds())) {
                     intersects = true;
                     if (staticItem.getRotation() != 0) {
-                        item.setY((staticItem.getPointOnTop(item.getCenterX()) - item.getHeight()));
+                        //item.setY((staticItem.getPointOnTop(item.getCenterX()) - item.getWidth()/2));
+                        item.setY((staticItem.getPointOnTop(player.getX() - staticItem.getX() -10 )-20));
                         item.setDx(item.getDx() + Board.getInstance().getGravity() * (staticItem.getRotation() / 180));
+                        
                     } else {
                         item.setY(staticItem.getY() - item.getHeight());
+                        
                     }
                     item.setMidair(false);
                 }
@@ -91,6 +94,7 @@ public class Board extends JPanel implements ActionListener {
             if(!intersects) {
                 item.setMidair(true);
             }
+            
         }
     }
 
@@ -153,6 +157,8 @@ public class Board extends JPanel implements ActionListener {
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+        return;
+        
     }
 
     public double getGravity() {
