@@ -165,7 +165,7 @@ public class Board extends JPanel implements ActionListener {
         }
         Random random = new Random();
         //get the range, casting to long to avoid overflow problems
-        long range = (long) start - (long) end + 1;
+        long range = (long) end - (long) start + 1;
         // compute a fraction of the range, 0 <= frac < range
         long fraction = (long) (range * random.nextDouble());
         return (int) (fraction + start);
