@@ -67,10 +67,7 @@ public class Item extends Rectangle2D.Double {
     }
 
     public void setY(double y) {
-    	//
         this.y = y;
-        
-        
     }
 
     public double getDx() {
@@ -113,7 +110,7 @@ public class Item extends Rectangle2D.Double {
         Graphics2D g2d = (Graphics2D) g;
         if (this.rotation != 0)
             g2d.rotate(Math.toRadians(this.rotation), getX() + getWidth() / 2, getY() + getHeight() / 2);
-        g2d.drawRect((int) getX(), (int) getY(), (int) getWidth(), (int) getHeight());
+        g2d.fillRect((int) getX(), (int) getY(), (int) getWidth(), (int) getHeight());
         if (this.rotation != 0)
             g2d.rotate(Math.toRadians(this.rotation) * -1, getX() + getWidth() / 2, getY() + getHeight() / 2);
     }

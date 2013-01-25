@@ -16,6 +16,7 @@ public class Board extends JPanel implements ActionListener {
     private static Board instance;
     private Player player;
     private Timer timer;
+    private double speed = 1;
     private ArrayList items;
     private ArrayList staticItems;
     private Building lastBuilding;
@@ -31,7 +32,7 @@ public class Board extends JPanel implements ActionListener {
         lastBuilding = new Building(0, 200, 1000, 300);
         staticItems.add(lastBuilding);
 
-        setBackground(Color.DARK_GRAY);
+        setBackground(Color.BLACK);
         setDoubleBuffered(true);
         setFocusable(true);
         setSize(Main.getInstance().getWidth(), Main.getInstance().getHeight());
@@ -56,6 +57,7 @@ public class Board extends JPanel implements ActionListener {
         checkCollisions();
         createNewBuildings();
         collectGarbage();
+        speed += 0.001;
         repaint();
     }
 
@@ -101,7 +103,7 @@ public class Board extends JPanel implements ActionListener {
     private void moveStaticItems() {
         for (int j = 0; j < staticItems.size(); ++j) {
             Item staticItem = (Item) staticItems.get(j);
-            staticItem.setX(staticItem.getX() - 1);
+            staticItem.setX(staticItem.getX() - (1 * speed));
         }
     }
 
@@ -140,7 +142,9 @@ public class Board extends JPanel implements ActionListener {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2d.setColor(Color.red);
             player.paint(g2d);
+            g2d.setColor(Color.white);
             for (int i = 0; i < staticItems.size(); ++i) {
                 Item item = (Item) staticItems.get(i);
                 item.paint(g2d);
